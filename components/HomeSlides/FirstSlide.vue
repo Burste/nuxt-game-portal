@@ -15,7 +15,7 @@ const DOWNLOAD_TYPE = {
     },
     QRCODE: {
         name: 'Scan QRCODE',
-        img: '/img/download_qrcode.png',
+        img: '/img/download_qrCode.png',
     },
 };
 </script>
@@ -40,7 +40,7 @@ const DOWNLOAD_TYPE = {
         />
 
         <div
-            class="absolute w-full h-[120px] z-[1] flex justify-center items-center top-28 lg:justify-start px-10 2xl:px-20"
+            class="absolute w-full h-[120px] z-[1] flex justify-center items-center top-28 md:top-20 lg:justify-start px-10 2xl:px-20"
             data-aos="fade-down"
             data-aos-delay="700"
         >
@@ -63,7 +63,7 @@ const DOWNLOAD_TYPE = {
                     class="flex z-[1] h-[140px] min-w-[260px] w-full bg-contain bg-center bg-portal-slogan-m md:bg-portal-slogan-pc bg-no-repeat"
                 />
                 <div
-                    class="h-full max-h-[105px] hidden md:flex md:flex-row md:justify-between px-12"
+                    class="h-full max-h-[105px] hidden md:flex md:flex-row md:justify-between px-12 gap-6"
                 >
                     <img
                         :src="DOWNLOAD_TYPE.PC.img"

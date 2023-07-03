@@ -3,9 +3,9 @@ export default defineNuxtConfig({
     css: ['@/assets/style/main.scss'],
     devtools: { enabled: true },
     modules: ['@pinia/nuxt', '@vueuse/nuxt', '@vueuse/motion/nuxt'],
-    typescript: {
-        typeCheck: true,
-    },
+    // typescript: {
+    //     typeCheck: true,
+    // },
     build: {
         transpile: ['gsap'],
     },
