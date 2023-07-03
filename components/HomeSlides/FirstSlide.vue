@@ -44,7 +44,7 @@ const DOWNLOAD_TYPE = {
             data-aos="fade-down"
             data-aos-delay="700"
         >
-            <img src="/img/logo.webp" alt="" class="flex h-[120px]" />
+            <img src="/img/logo.png" alt="" class="flex h-[120px]" />
         </div>
         <div
             class="flex justify-center"
