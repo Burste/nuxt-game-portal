@@ -8,7 +8,7 @@ const hideLoading = ref(false);
 
 const { start } = useTimeoutFn(() => {
     hideLoading.value = true;
-}, 500);
+}, 300);
 
 nuxtApp.hook('page:start', () => {
     loading.value = true;
