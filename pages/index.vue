@@ -91,9 +91,6 @@ watch(homeSwiperIndex, (newVal, oldVal) => {
     justify-content: center;
     align-items: center;
 }
-.swiper-pagination {
-    display: none;
-}
 /* .swiper-slide img {
     display: block;
     width: 100%;

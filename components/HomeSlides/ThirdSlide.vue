@@ -15,14 +15,14 @@ const modules = [Mousewheel, Navigation, Pagination, Keyboard];
 SwiperCore.use(modules);
 
 const { bodyWidth } = usePage();
-// const refFeatureSwiper = ref(null);
-// const onSwiper = (swiper) => {
-//     refFeatureSwiper.value = swiper;
-// };
+const refFeatureSwiper = ref(null);
+const onSwiper = (swiper) => {
+    refFeatureSwiper.value = swiper;
+};
 // const goToSlide = (position) => {
 //     refFeatureSwiper.value?.slideTo(position);
 // };
-
+console.log('bodyWidth', bodyWidth);
 const config = {
     initialSlide: 0,
     slidesPerView: 3,
@@ -30,7 +30,7 @@ const config = {
     centeredSlides: true,
     loop: false,
     speed: 700,
-    mousewheel: true,
+    // mousewheel: true,
     autoplay: true,
     Keyboard: true,
 };
@@ -62,6 +62,10 @@ const FEATURE_SLIDES = [
         alt: '',
     },
 ];
+
+const getImg = (data) => {
+    return bodyWidth < 1024 ? data.imgM : data.imgPC;
+};
 </script>
 <template>
     <div
@@ -88,12 +92,12 @@ const FEATURE_SLIDES = [
                 <div
                     src="/img/img-feature-frame_m.png"
                     alt=""
-                    class="absolute top-0 left-0 z-1 lg:hidden min-w-[200px] min-h-[350px]"
+                    class="absolute top-0 left-0 z-1 lg:hidden min-w-[200px] min-h-[350px] lg:w-[1000px] lg:h-[570px]"
                 />
                 <img
-                    :src="bodyWidth < 1024 ? slide.imgM : slide.imgPC"
+                    :src="getImg(slide)"
                     :alt="slide.alt"
-                    class="min-w-[200px] min-h-[350px] lg:min-w-[1000px] lg:min-h-[570px]"
+                    class="min-w-[200px] min-h-[350px] lg:w-[1000px] lg:h-[570px]"
                 />
             </swiper-slide>
         </swiper>
