@@ -18,6 +18,32 @@ const DOWNLOAD_TYPE = {
         img: '/img/download_qrCode.png',
     },
 };
+
+const SOCIAL_LINK = [
+    {
+        title: 'youtube',
+        img: '/img/ic-youtube.png',
+    },
+    {
+        title: 'facebook',
+        img: '/img/ic-facebook.png',
+    },
+    {
+        title: 'discord',
+        img: '/img/ic-discord.png',
+    },
+];
+
+const COMMON_LINK = [
+    {
+        title: 'gift',
+        img: '/img/img-exchange.png',
+    },
+    {
+        title: 'pay',
+        img: '/img/img-pay.png',
+    },
+];
 </script>
 <template>
     <div class="flex items-center justify-center relative w-full h-full">
@@ -40,28 +66,35 @@ const DOWNLOAD_TYPE = {
         />
 
         <div
-            class="absolute w-full h-[120px] z-[1] flex justify-center items-center top-28 md:top-20 lg:justify-start px-10 2xl:px-20"
+            class="absolute w-full h-[120px] z-[1] flex justify-center items-center top-24 md:top-20 lg:justify-start px-10 2xl:px-20"
             data-aos="fade-down"
             data-aos-delay="700"
         >
             <img src="/img/logo.png" alt="" class="flex h-[120px]" />
         </div>
         <div
-            class="flex justify-center"
+            class="flex justify-center items-end z-[1] absolute bottom-[33%] md:bottom-[13%] lg:bottom-[25%]"
             data-aos="fade-up"
             data-aos-anchor-placement="top-bottom"
             data-aos-delay="1000"
             data-aos-once="false"
         >
-            <div class="flex flex-col md:justify-center gap-6 w-full">
-                <!-- <img
-                    src="/img/slogan.png"
-                    alt=""
-                    class="flex z-[1] h-[140px] w-full"
-                /> -->
+            <div
+                class="flex flex-col justify-end md:justify-center gap-6 w-full"
+            >
                 <div
-                    class="flex z-[1] h-[140px] min-w-[260px] w-full bg-contain bg-center bg-portal-slogan-m md:bg-portal-slogan-pc bg-no-repeat"
+                    class="flex h-[140px] min-w-[260px] w-full bg-contain bg-center bg-portal-slogan-m md:bg-portal-slogan-pc bg-no-repeat"
                 />
+
+                <div class="flex items-center gap-10 justify-between">
+                    <img
+                        v-for="item in COMMON_LINK"
+                        :key="item.title"
+                        :src="item.img"
+                        :alt="item.title"
+                        class="h-8 cursor-pointer"
+                    />
+                </div>
                 <div
                     class="h-full max-h-[105px] hidden md:flex md:flex-row md:justify-between px-12 gap-6"
                 >
@@ -90,6 +123,22 @@ const DOWNLOAD_TYPE = {
                         />
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div
+            class="flex absolute right-0"
+            data-aos="fade-left"
+            data-aos-delay="1200"
+        >
+            <div class="flex flex-col gap-2">
+                <img
+                    v-for="item in SOCIAL_LINK"
+                    :key="item.title"
+                    :src="item.img"
+                    :alt="item.title"
+                    class="w-8 cursor-pointer"
+                />
             </div>
         </div>
     </div>

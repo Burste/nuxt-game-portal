@@ -76,3 +76,80 @@ const classRoomBaseStyle =
         />
     </div>
 </template>
+<style lang="scss" scoped>
+.room {
+    width: 187px;
+    transition: all 0.6s ease-in-out;
+    animation: roomFlow 10s linear infinite;
+    &:nth-child(2n-1) {
+        animation: roomFlowDown 10s linear infinite;
+    }
+    &-headMaster {
+        margin: -340px 0 0 -220px;
+        background-image: url('/img/room-headMaster_normal.png');
+        &:hover {
+            margin: -360px 0 0 -220px;
+            background-image: url('/img/room-headMaster_hover.png');
+        }
+    }
+
+    &-ravenclaw {
+        margin: -220px 0 0 18px;
+        background-image: url('/img/room-ravenclaw_normal.png');
+        &:hover {
+            margin: -240px 0 0 18px;
+            background-image: url('/img/room-ravenclaw_hover.png');
+        }
+    }
+
+    &-gryffindor {
+        margin: -106px 0 0 -130px;
+        background-image: url('/img/room-gryffindor_normal.png');
+        &:hover {
+            margin: -126px 0 0 -130px;
+            background-image: url('/img/room-gryffindor_hover.png');
+        }
+    }
+    &-potions {
+        margin: 55px 0 0 -170px;
+        background-image: url('/img/room-potions_normal.png');
+        &:hover {
+            margin: 35px 0 0 -170px;
+            background-image: url('/img/room-potions_hover.png');
+        }
+    }
+    &-astronomy {
+        margin: 9px 0 0 76px;
+        background-image: url('/img/room-astronomy_normal.png');
+        &:hover {
+            margin: -11px 0 0 76px;
+            background-image: url('/img/room-astronomy_hover.png');
+        }
+    }
+
+    &-hall {
+        margin: 52px 0 0 -400px;
+        background-image: url('/img/room-hall_normal.png');
+        &:hover {
+            margin: 32px 0 0 -400px;
+            background-image: url('/img/room-hall_hover.png');
+        }
+    }
+    &-slytherin {
+        margin: 210px 0 0 -207px;
+        background-image: url('/img/room-slytherin_normal.png');
+        &:hover {
+            margin: 190px 0 0 -207px;
+            background-image: url('/img/room-slytherin_hover.png');
+        }
+    }
+    &-hufflepuff {
+        margin: 220px 0 0 -471px;
+        background-image: url('/img/room-hufflepuff_normal.png');
+        &:hover {
+            margin: 200px 0 0 -471px;
+            background-image: url('/img/room-hufflepuff_hover.png');
+        }
+    }
+}
+</style>

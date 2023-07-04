@@ -23,6 +23,8 @@ module.exports = {
                 'portal-background-cloud-1': "url('/img/bg-cloud-1.png')",
                 'portal-background-cloud-2': "url('/img/bg-cloud-2.png')",
                 'portal-background-app-bar': "url('/img/bg-download-bar.jpeg')",
+                'portal-background-footer': "url('/img/bg-footer.jpg')",
+                'portal-background-feature': "url('/img/bg-feature-spark.jpg')",
             },
             animation: {
                 fastMovingCloud: 'closeCloudMoving 30s linear infinite',
