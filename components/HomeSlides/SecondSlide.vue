@@ -59,7 +59,7 @@ const classRoomBaseStyle =
             />
         </div>
         <div
-            class="z-[2] flex w-full h-full absolute top-0 left-0 scale-[0.5] translate-x-[50px] s480:scale-[0.75] s480:translate-x-[80px] md:scale-[0.8] lg:transform-none"
+            class="z-[2] flex w-full h-full absolute top-0 left-0 scale-[0.50] translate-x-[50px] s480:scale-[0.75] s480:translate-x-[80px] md:scale-[0.8] lg:transform-none"
         >
             <div
                 v-for="item in CLASSROOM"

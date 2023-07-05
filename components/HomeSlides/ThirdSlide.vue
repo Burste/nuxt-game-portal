@@ -13,7 +13,6 @@ import SwiperCore, {
 
 const modules = [Mousewheel, Navigation, Pagination, Keyboard];
 SwiperCore.use(modules);
-
 const { bodyWidth } = usePage();
 const refFeatureSwiper = ref(null);
 const onSwiper = (swiper) => {
@@ -22,18 +21,6 @@ const onSwiper = (swiper) => {
 // const goToSlide = (position) => {
 //     refFeatureSwiper.value?.slideTo(position);
 // };
-console.log('bodyWidth', bodyWidth);
-const config = {
-    initialSlide: 0,
-    slidesPerView: 3,
-    spaceBetween: 30,
-    centeredSlides: true,
-    loop: false,
-    speed: 700,
-    // mousewheel: true,
-    autoplay: true,
-    Keyboard: true,
-};
 
 const FEATURE_SLIDES = [
     {
@@ -62,74 +49,76 @@ const FEATURE_SLIDES = [
         alt: '',
     },
 ];
-
-const getImg = (data) => {
-    return bodyWidth < 1024 ? data.imgM : data.imgPC;
-};
 </script>
 <template>
     <div
         class="flex items-center justify-center bg-portal-background-feature bg-cover bg-center bg-no-repeat w-full h-full"
     >
-        <swiper
-            class="mySwiper"
-            :autoplay="config.autoplay"
-            :initialSlide="config.initialSlide"
-            :mousewheel="config.mousewheel"
-            :modules="modules"
-            :slidesPerView="config.slidesPerView"
-            :spaceBetween="config.spaceBetween"
-            :centeredSlides="config.centeredSlides"
-            :loop="config.loop"
-            :speed="config.speed"
-            @swiper="onSwiper"
-        >
-            <swiper-slide
-                v-for="(slide, index) in FEATURE_SLIDES"
-                :key="index"
-                class="bg-transparent relative gallery-slide"
+        <div class="flex">
+            <swiper
+                class="mySwiper"
+                :effect="'coverflow'"
+                :grabCursor="true"
+                :centeredSlides="true"
+                :slidesPerView="'auto'"
+                :coverflowEffect="{
+                    rotate: 50,
+                    stretch: 0,
+                    depth: 100,
+                    modifier: 1,
+                    slideShadows: true,
+                }"
+                :pagination="true"
+                :spaceBetween="30"
+                @swiper="onSwiper"
             >
-                <div
-                    src="/img/img-feature-frame_m.png"
-                    alt=""
-                    class="absolute top-0 left-0 z-1 lg:hidden min-w-[200px] min-h-[350px] lg:w-[1000px] lg:h-[570px]"
-                />
-                <img
-                    :src="getImg(slide)"
-                    :alt="slide.alt"
-                    class="min-w-[200px] min-h-[350px] lg:w-[1000px] lg:h-[570px]"
-                />
-            </swiper-slide>
-        </swiper>
+                <swiper-slide
+                    v-for="(slide, index) in FEATURE_SLIDES"
+                    :key="index"
+                    class="bg-transparent relative gallery-slide w-[245px] max-w-[245px] min-h-[430px]"
+                >
+                    <div
+                        src="/img/img-feature-frame_m.png"
+                        alt=""
+                        class="absolute top-0 left-0 z-1 lg:hidden w-[245px] min-h-[430px]"
+                    />
+                    <img
+                        :src="slide.imgM"
+                        :alt="slide.alt"
+                        class="w-[245px] h-[430px]"
+                    />
+                </swiper-slide>
+            </swiper>
+        </div>
     </div>
 </template>
 <style lang="scss" scoped>
-.swiper-slide {
-    text-align: center;
-    font-size: 18px;
-    background: transparent;
+// .swiper-slide {
+//     text-align: center;
+//     font-size: 18px;
+//     background: transparent;
 
-    /* Center slide text vertically */
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    align-items: center;
-    transition: 300ms;
-    transform: scale(0.8);
-}
-.swiper-slide-active,
-.swiper-slide-duplicate-active {
-    transform: scale(1);
-    z-index: 10;
-}
+//     /* Center slide text vertically */
+//     display: -webkit-box;
+//     display: -ms-flexbox;
+//     display: -webkit-flex;
+//     display: flex;
+//     -webkit-box-pack: center;
+//     -ms-flex-pack: center;
+//     -webkit-justify-content: center;
+//     justify-content: center;
+//     -webkit-box-align: center;
+//     -ms-flex-align: center;
+//     -webkit-align-items: center;
+//     align-items: center;
+//     transition: 300ms;
+//     transform: scale(0.8);
+// }
+// .swiper-slide-active,
+// .swiper-slide-duplicate-active {
+//     transform: scale(1);
+//     z-index: 10;
+// }
 // .gallery-slide {
 //     &:before {
 //         position: absolute;

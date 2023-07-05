@@ -2,7 +2,12 @@
 export default defineNuxtConfig({
     css: ['@/assets/style/main.scss'],
     devtools: { enabled: true },
-    modules: ['@pinia/nuxt', '@vueuse/nuxt', '@vueuse/motion/nuxt'],
+    modules: [
+        '@pinia/nuxt',
+        '@vueuse/nuxt',
+        '@vueuse/motion/nuxt',
+        'nuxt-swiper',
+    ],
     // typescript: {
     //     typeCheck: true,
     // },

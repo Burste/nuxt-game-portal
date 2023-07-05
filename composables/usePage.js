@@ -1,6 +1,8 @@
+import { useWindowSize } from '@vueuse/core';
 export const usePage = () => {
-    const bodyWidth = typeof window !== 'undefined' ? window.innerWidth : 0;
-    const bodyHeight = typeof window !== 'undefined' ? window.innerHeight : 0;
+    const { width, height } = useWindowSize();
+    const bodyWidth = width.value;
+    const bodyHeight = height.value;
     return {
         bodyWidth,
         bodyHeight,

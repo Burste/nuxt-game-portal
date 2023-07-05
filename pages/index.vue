@@ -5,12 +5,7 @@ import FirstSlide from '@/components/HomeSlides/FirstSlide';
 import SecondSlide from '@/components/HomeSlides/SecondSlide';
 import ThirdSlide from '@/components/HomeSlides/ThirdSlide';
 import { Swiper, SwiperSlide } from 'swiper/vue';
-import SwiperCore, {
-    Keyboard,
-    Mousewheel,
-    Navigation,
-    Pagination,
-} from 'swiper';
+import SwiperCore, { Keyboard, Mousewheel, Pagination } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { storeToRefs } from 'pinia';

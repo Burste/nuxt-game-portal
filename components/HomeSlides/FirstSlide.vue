@@ -1,5 +1,10 @@
 <script setup>
+import { usePlatformStore } from '@/stores/platform';
+import { storeToRefs } from 'pinia';
+
 const refVideoMobile = ref(null);
+const { bgMusicStatus } = storeToRefs(usePlatformStore());
+
 const DOWNLOAD_TYPE = {
     PC: {
         name: 'Dowload PC',
@@ -61,7 +66,7 @@ const COMMON_LINK = [
             src="https://nie.v.netease.com/nie/2021/0602/f0ea772b84cd7c2b84e1af116d410276.mp4"
             autoplay
             loop
-            muted
+            :muted="bgMusicStatus ? 'false' : 'true'"
             class="hidden md:flex absolute object-center w-full h-full object-cover"
         />
 
@@ -70,7 +75,11 @@ const COMMON_LINK = [
             data-aos="fade-down"
             data-aos-delay="700"
         >
-            <img src="/img/logo.png" alt="" class="flex h-[120px]" />
+            <img
+                src="/img/logo.png"
+                alt=""
+                class="flex max-h-[120px] md:h-[100px]"
+            />
         </div>
         <div
             class="flex justify-center items-end z-[1] absolute bottom-[33%] md:bottom-[13%] lg:bottom-[25%]"

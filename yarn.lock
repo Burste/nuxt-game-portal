@@ -840,7 +840,7 @@
     which "^3.0.1"
     ws "^8.13.0"
 
-"@nuxt/kit@3.6.1", "@nuxt/kit@^3.3.3", "@nuxt/kit@^3.5.0", "@nuxt/kit@^3.5.1", "@nuxt/kit@^3.6.1":
+"@nuxt/kit@3.6.1", "@nuxt/kit@^3.3.3", "@nuxt/kit@^3.5.0", "@nuxt/kit@^3.5.1", "@nuxt/kit@^3.5.3", "@nuxt/kit@^3.6.1":
   version "3.6.1"
   resolved "https://registry.yarnpkg.com/@nuxt/kit/-/kit-3.6.1.tgz#78c1a18f63defaf890f1e7d6c69f4d385d43b8af"
   integrity sha512-7AoiKV0zAtyT3ZvjMfGislMcB+JMbBZxYw68/oWtkEPXCfGQMYuiMI9Ue246/0JT2Yp2KZclEgrJEJ6NLkqFcw==
@@ -5374,6 +5374,14 @@ nuxi@3.6.1:
   integrity sha512-8kyDHfyiq0oLywon8UlucQWyYj3toE5AU96COjbuQy8ZzyRT6KJlAmMXmFkO/VuIhaMC8qdlcZPYg/NnHTVjaQ==
   optionalDependencies:
     fsevents "~2.3.2"
+
+nuxt-swiper@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/nuxt-swiper/-/nuxt-swiper-1.1.1.tgz#3562bf02115a54fddbda7dda71a3bb574ed64a65"
+  integrity sha512-MN2OjExBgsZKX4z+954NJUx5Rf2bMTpFeIV/B9+++A/Lxndhy7C9os4zaNYTsRrImAIBlcftJQoSZMXhvg0Juw==
+  dependencies:
+    "@nuxt/kit" "^3.5.3"
+    swiper "^9.4.1"
 
 nuxt@^3.6.1:
   version "3.6.1"

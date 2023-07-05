@@ -4,14 +4,17 @@ export const usePlatformStore = defineStore('platform', {
     state: () => ({
         homeSwiperIndex: 0,
         bgMusicStatus: false,
+        appDownloadWidgetStatus: true,
     }),
     actions: {
         onHomeSwiperChange(index) {
             this.homeSwiperIndex = index;
         },
         toggleBackgroundMusic() {
-            console.log('toggleBackgroundMusic', this.bgMusicStatus);
             this.bgMusicStatus = !this.bgMusicStatus;
+        },
+        toggleAppWidget() {
+            this.appDownloadWidgetStatus = !this.appDownloadWidgetStatus;
         },
     },
 });

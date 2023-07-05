@@ -1,15 +1,17 @@
 <script setup>
 import { usePlatformStore } from '@/stores/platform';
 import { storeToRefs } from 'pinia';
+import { useWindowSize } from '@vueuse/core';
 
-const { bodyWidth, bodyHeight } = usePage();
+const { width, height } = useWindowSize();
 const { bgMusicStatus, homeSwiperIndex } = storeToRefs(usePlatformStore());
 const { onHomeSwiperChange, toggleBackgroundMusic } = usePlatformStore();
+
 const navList = [
     { name: '官網首頁', key: 'home' },
     { name: '地圖', key: 'about' },
     { name: '遊戲特色', key: 'feature' },
-    { name: '夥伴介紹', key: 'contact' },
+    // { name: '夥伴介紹', key: 'contact' },
     {
         name: '福利兌換',
         key: 'gift',
@@ -23,16 +25,13 @@ const MUSIC_STATUS_IMG = {
     MUTE: '/img/music_mute.png',
 };
 
-const BASE_WIDTH = bodyWidth < 768 ? 80 : 100;
-const BASE_PADDING = bodyWidth < 768 ? 20 : 36;
+const BASE_WIDTH = width < 768 ? 80 : 100;
+const BASE_PADDING = width < 768 ? 20 : 36;
 const transformPosition = (index) => {
     return `translateX(calc(${BASE_WIDTH * index}% + ${
         index * BASE_PADDING
     }px))`;
 };
-watch(bgMusicStatus, (newVal) => {
-    console.log('watch', 'bgMusicStatus', newVal);
-});
 </script>
 
 <template>
@@ -57,7 +56,6 @@ watch(bgMusicStatus, (newVal) => {
                 @click="
                     () => {
                         if (item.link) return;
-                        console.log('clicindx');
                         onHomeSwiperChange(idx);
                     }
                 "
@@ -74,12 +72,12 @@ watch(bgMusicStatus, (newVal) => {
                 }"
             />
         </div>
-        <img
+        <!-- <img
             :src="bgMusicStatus ? MUSIC_STATUS_IMG.MUTE : MUSIC_STATUS_IMG.PLAY"
             alt=""
-            class="w-10 h-10 absolute right-0 cursor-pointer"
+            class="w-8 h-8 absolute right-4 cursor-pointer"
             @click="() => toggleBackgroundMusic()"
-        />
+        /> -->
     </div>
 </template>
 

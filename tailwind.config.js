@@ -29,6 +29,7 @@ module.exports = {
             animation: {
                 fastMovingCloud: 'closeCloudMoving 30s linear infinite',
                 slowMovingCloud: 'farCloudMoving 30s 10s linear infinite',
+                flowUpAndDown: 'flowUpAndDown 3s infinite linear alternate',
             },
             keyframes: {
                 farCloudMoving: {
@@ -38,6 +39,10 @@ module.exports = {
                 closeCloudMoving: {
                     '0%': { marginLeft: '-500px' },
                     '100%': { marginLeft: '100%' },
+                },
+                flowUpAndDown: {
+                    '0%': { transform: 'translateY(16px)' },
+                    '100%': { marginLeft: 'translateY(0px)' },
                 },
             },
             screens: {
