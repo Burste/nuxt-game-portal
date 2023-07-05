@@ -61,11 +61,6 @@ watch(homeSwiperIndex, (newVal, oldVal) => {
             <swiper-slide>
                 <third-slide />
             </swiper-slide>
-            <swiper-slide
-                class="footer-slide"
-                style="height: 400px; overflow: hidden"
-                >123
-            </swiper-slide>
         </swiper>
     </div>
 </template>
