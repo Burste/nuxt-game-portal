@@ -35,6 +35,18 @@ const onSlideChange = (param) => {
 watch(homeSwiperIndex, (newVal, oldVal) => {
     if (newVal !== oldVal) goToSlide(newVal);
 });
+
+useHead({
+    title: 'Nuxt 3 遊戲官網',
+    viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
+    charset: 'utf-8',
+    meta: [
+        {
+            name: 'description',
+            content: '哈利波特魔法覺醒 遊戲網站 build by Nuxt3',
+        },
+    ],
+});
 </script>
 <template>
     <div class="w-full h-[100vh] relative">
