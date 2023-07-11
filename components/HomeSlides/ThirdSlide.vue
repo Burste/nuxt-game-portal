@@ -4,15 +4,17 @@ import 'swiper/css';
 import 'swiper/css/keyboard';
 import 'swiper/css/pagination';
 import 'swiper/css/mousewheel';
-import SwiperCore, {
-    Keyboard,
-    Mousewheel,
-    Navigation,
-    Pagination,
-} from 'swiper';
+import { EffectCoverflow, Pagination } from 'swiper/modules';
+// import SwiperCore, {
+//     Keyboard,
+//     Mousewheel,
+//     Navigation,
+//     Pagination,
+// } from 'swiper';
 
-const modules = [Mousewheel, Navigation, Pagination, Keyboard];
-SwiperCore.use(modules);
+// const modules = [Mousewheel, Navigation, Pagination, Keyboard];
+// SwiperCore.use(modules);
+const modules = [EffectCoverflow, Pagination];
 const { bodyWidth } = usePage();
 const refFeatureSwiper = ref(null);
 const onSwiper = (swiper) => {
@@ -56,20 +58,20 @@ const FEATURE_SLIDES = [
     >
         <div class="flex">
             <swiper
-                class="mySwiper"
                 :effect="'coverflow'"
+                :loop="true"
                 :grabCursor="true"
                 :centeredSlides="true"
                 :slidesPerView="'auto'"
                 :coverflowEffect="{
-                    rotate: 50,
+                    rotate: 45,
                     stretch: 0,
                     depth: 100,
                     modifier: 1,
                     slideShadows: true,
                 }"
                 :pagination="true"
-                :spaceBetween="30"
+                :modules="modules"
                 @swiper="onSwiper"
             >
                 <swiper-slide
@@ -77,11 +79,11 @@ const FEATURE_SLIDES = [
                     :key="index"
                     class="bg-transparent relative gallery-slide w-[245px] max-w-[245px] min-h-[430px]"
                 >
-                    <div
+                    <!-- <div
                         src="/img/img-feature-frame_m.png"
                         alt=""
                         class="absolute top-0 left-0 z-1 lg:hidden w-[245px] min-h-[430px]"
-                    />
+                    /> -->
                     <img
                         :src="slide.imgM"
                         :alt="slide.alt"

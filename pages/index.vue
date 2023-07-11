@@ -4,14 +4,12 @@ import { usePlatformStore } from '@/stores/platform';
 import FirstSlide from '@/components/HomeSlides/FirstSlide';
 import SecondSlide from '@/components/HomeSlides/SecondSlide';
 import ThirdSlide from '@/components/HomeSlides/ThirdSlide';
-import { Swiper, SwiperSlide } from 'swiper/vue';
-import SwiperCore, { Keyboard, Mousewheel, Pagination } from 'swiper';
+import { Mousewheel, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { storeToRefs } from 'pinia';
 
-const modules = [Mousewheel, Pagination, Keyboard];
-SwiperCore.use(modules);
+const modules = [Mousewheel, Pagination];
 
 const refSwiper = ref(null);
 const platformStore = usePlatformStore();
@@ -53,13 +51,10 @@ useHead({
         <swiper
             class="mySwiper"
             :initialSlide="platformStore.homeSwiperIndex"
-            :speed="700"
+            :speed="900"
             :mousewheel="true"
             :direction="'vertical'"
             :modules="modules"
-            :pagination="{
-                clickable: true,
-            }"
             :slidesPerView="1"
             @activeIndexChange="onSlideChange"
             @swiper="onSwiper"
