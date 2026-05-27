@@ -1,38 +1,30 @@
 <script setup>
-// Import Swiper Vue.js components
 import { usePlatformStore } from '@/stores/platform';
-import FirstSlide from '@/components/HomeSlides/FirstSlide';
-import SecondSlide from '@/components/HomeSlides/SecondSlide';
-import ThirdSlide from '@/components/HomeSlides/ThirdSlide';
-import { Mousewheel, Pagination } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/pagination';
 import { storeToRefs } from 'pinia';
+import AOS from 'aos';
 
-const modules = [Mousewheel, Pagination];
-
-const refSwiper = ref(null);
 const platformStore = usePlatformStore();
 const { homeSwiperIndex } = storeToRefs(platformStore);
 const { onHomeSwiperChange } = platformStore;
 
-const onSwiper = (swiper) => {
-    refSwiper.value = swiper;
-};
-const goToSlide = (position) => {
-    refSwiper.value?.slideTo(position);
-};
-
-// 滑動事件
-const onSlideChange = (param) => {
-    const { activeIndex } = param;
-    onHomeSwiperChange(activeIndex);
-};
-
-// 更新
-watch(homeSwiperIndex, (newVal, oldVal) => {
-    if (newVal !== oldVal) goToSlide(newVal);
+const containerRef = ref(null);
+const swiper = useSwiper(containerRef, {
+    initialSlide: platformStore.homeSwiperIndex,
+    speed: 900,
+    mousewheel: true,
+    direction: 'vertical',
+    slidesPerView: 1,
 });
+
+watch(swiper.activeIndex, (newIndex) => {
+    onHomeSwiperChange(newIndex);
+});
+
+watch(homeSwiperIndex, (newVal, oldVal) => {
+    if (newVal !== oldVal) swiper.to(newVal);
+});
+
+onMounted(() => nextTick(() => AOS.refreshHard()));
 
 useHead({
     title: 'Nuxt 3 遊戲官網',
@@ -46,52 +38,37 @@ useHead({
     ],
 });
 </script>
+
 <template>
-    <div class="w-full h-[100vh] relative">
-        <swiper
-            class="mySwiper"
-            :initialSlide="platformStore.homeSwiperIndex"
-            :speed="900"
-            :mousewheel="true"
-            :direction="'vertical'"
-            :modules="modules"
-            :slidesPerView="1"
-            @activeIndexChange="onSlideChange"
-            @swiper="onSwiper"
-        >
-            <swiper-slide>
-                <first-slide />
-            </swiper-slide>
-            <swiper-slide>
-                <second-slide />
-            </swiper-slide>
-            <swiper-slide>
-                <third-slide />
-            </swiper-slide>
-        </swiper>
+    <div class="w-full h-screen relative">
+        <ClientOnly>
+            <swiper-container ref="containerRef" :init="false" class="mySwiper">
+                <swiper-slide>
+                    <HomeSlidesFirstSlide />
+                </swiper-slide>
+                <swiper-slide>
+                    <HomeSlidesSecondSlide />
+                </swiper-slide>
+                <swiper-slide>
+                    <HomeSlidesThirdSlide />
+                </swiper-slide>
+            </swiper-container>
+        </ClientOnly>
     </div>
 </template>
 
-<style lang="scss" scoped>
-.swiper {
+<style lang="scss">
+.mySwiper {
     width: 100%;
     height: 100%;
 }
 
-.swiper-slide {
+swiper-slide {
     text-align: center;
     font-size: 18px;
     background: #fff;
-
-    /* Center slide text vertically */
     display: flex;
     justify-content: center;
     align-items: center;
 }
-/* .swiper-slide img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-} */
 </style>

@@ -2,7 +2,6 @@
 import { usePlatformStore } from '@/stores/platform';
 import { storeToRefs } from 'pinia';
 
-const refVideoMobile = ref(null);
 const { bgMusicStatus } = storeToRefs(usePlatformStore());
 
 const DOWNLOAD_TYPE = {
@@ -53,7 +52,6 @@ const COMMON_LINK = [
 <template>
     <div class="flex items-center justify-center relative w-full h-full">
         <video
-            ref="refVideoMobile"
             src="/video/bg-video_m.mp4"
             autoplay
             loop
@@ -66,14 +64,15 @@ const COMMON_LINK = [
             src="https://nie.v.netease.com/nie/2021/0602/f0ea772b84cd7c2b84e1af116d410276.mp4"
             autoplay
             loop
-            :muted="bgMusicStatus ? 'false' : 'true'"
+            :muted="!bgMusicStatus"
+            poster="/img/bg-main-preview.jpg"
             class="hidden md:flex absolute object-center w-full h-full object-cover"
         />
 
         <div
             class="absolute w-full h-[120px] z-[1] flex justify-center items-center top-24 md:top-20 lg:justify-start px-10 2xl:px-20"
             data-aos="fade-down"
-            data-aos-delay="700"
+            data-aos-delay="1000"
         >
             <img
                 src="/img/logo.png"
@@ -152,3 +151,24 @@ const COMMON_LINK = [
         </div>
     </div>
 </template>
+<style lang="scss" scoped>
+@keyframes qrcode {
+    50% {
+        transform: translateX(100px);
+    }
+}
+.qrCode {
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0px;
+        left: 50%;
+        margin-left: -68px;
+        width: 136px;
+        height: 18px;
+        background: url('/img/qrcode-scan-indicator.png') no-repeat center
+            center;
+        animation: 3s linear 0s infinite normal none running qrcode;
+    }
+}
+</style>

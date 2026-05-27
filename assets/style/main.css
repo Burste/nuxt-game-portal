@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+@theme {
+    /* Colors */
+    --color-portal-color-gold: #c2a673;
+    --color-portal-color-white: #dadada;
+    --color-portal-color-brown: #593522;
+
+    /* Background images */
+    --background-image-portal-slogan-m: url('/img/slogan_m.png');
+    --background-image-portal-slogan-pc: url('/img/slogan_pc.png');
+    --background-image-portal-background-map-pc: url('/img/bg-map_pc.jpg');
+    --background-image-portal-background-map-m: url('/img/bg-map_m.png');
+    --background-image-portal-background-cloud-1: url('/img/bg-cloud-1.png');
+    --background-image-portal-background-cloud-2: url('/img/bg-cloud-2.png');
+    --background-image-portal-background-app-bar: url('/img/bg-download-bar.jpeg');
+    --background-image-portal-background-footer: url('/img/bg-footer.jpg');
+    --background-image-portal-background-feature: url('/img/bg-feature-spark.jpg');
+
+    /* Animations */
+    --animate-fastMovingCloud: closeCloudMoving 30s linear infinite;
+    --animate-slowMovingCloud: farCloudMoving 30s 10s linear infinite;
+    --animate-flowUpAndDown: flowUpAndDown 3s linear infinite alternate;
+
+    /* Custom breakpoints */
+    --breakpoint-s480: 480px;
+}
+
+@layer base {
+    html,
+    body {
+        position: relative;
+        height: 100%;
+    }
+
+    body {
+        @apply text-portal-color-white;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+@keyframes roomFlow {
+    0%   { transform: translateY(-10px); }
+    50%  { transform: translateY(10px); }
+    100% { transform: translateY(-10px); }
+}
+
+@keyframes roomFlowDown {
+    0%   { transform: translateY(10px); }
+    50%  { transform: translateY(-10px); }
+    100% { transform: translateY(10px); }
+}
+
+@keyframes closeCloudMoving {
+    0%   { transform: translateX(-500px); }
+    100% { transform: translateX(100vw); }
+}
+
+@keyframes farCloudMoving {
+    0%   { transform: translateX(-1000px); }
+    100% { transform: translateX(100vw); }
+}
+
+@keyframes flowUpAndDown {
+    0%   { transform: translateY(16px); }
+    100% { transform: translateY(0px); }
+}

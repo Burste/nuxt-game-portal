@@ -1,21 +1,54 @@
 <script setup>
 import TopDownloadBar from '@/components/TopDownloadBar.vue';
 
+const PRELOAD_ASSETS = [
+    '/img/logo.png',
+    '/img/slogan_m.png',
+    '/img/slogan_pc.png',
+    '/img/bg-map_pc.jpg',
+    '/img/bg-map_m.png',
+    '/img/bg-cloud-1.png',
+    '/img/bg-cloud-2.png',
+    '/img/bg-feature-spark.jpg',
+    '/img/nav_active.png',
+    '/img/img-other-tips.png',
+    '/img/bg-download-bar.jpeg',
+    '/img/bg-main-preview.jpg',
+];
+
 const nuxtApp = useNuxtApp();
 const loading = ref(true);
-
 const hideLoading = ref(false);
+const pageFinished = ref(false);
 
-const { start } = useTimeoutFn(() => {
+const { progress, isComplete, load } = usePreloader(PRELOAD_ASSETS);
+
+const { start: startHideTimer } = useTimeoutFn(() => {
     hideLoading.value = true;
-}, 300);
+}, 1000);
+
+const tryFinish = () => {
+    if (pageFinished.value && isComplete.value) {
+        loading.value = false;
+        startHideTimer();
+    }
+};
 
 nuxtApp.hook('page:start', () => {
     loading.value = true;
+    hideLoading.value = false;
+    pageFinished.value = false;
 });
+
 nuxtApp.hook('page:finish', () => {
-    loading.value = false;
-    start();
+    pageFinished.value = true;
+    tryFinish();
+});
+
+watch(isComplete, () => tryFinish());
+
+onMounted(() => {
+    load();
 });
 </script>
 
@@ -24,14 +57,14 @@ nuxtApp.hook('page:finish', () => {
         <div
             :class="[
                 `fixed left-0 top-0 w-full z-50 bg-portal-color-brown h-full ${
-                    loading ? 'opacity-1' : 'opacity-0'
+                    loading ? 'opacity-100' : 'opacity-0'
                 } transition-opacity duration-500 ease-in-out`,
                 {
                     hidden: hideLoading,
                 },
             ]"
         >
-            <LoadingFrame />
+            <LoadingFrame :progress="progress" />
         </div>
         <div class="">
             <top-download-bar />

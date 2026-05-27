@@ -51,11 +51,11 @@ const classRoomBaseStyle =
             class="flex w-full h-full bg-portal-background-map-m md:bg-portal-background-map-pc bg-cover bg-center relative"
         >
             <div
-                class="bg-portal-background-cloud-1 bg-no-repeat w-full h-full animate-fastMovingCloud absolute top-0 left-0 bg-contain -ml-[500px]"
+                class="bg-portal-background-cloud-1 bg-no-repeat w-full h-full animate-fastMovingCloud absolute top-0 left-0 bg-contain"
             />
 
             <div
-                class="bg-portal-background-cloud-2 bg-no-repeat w-full h-full animate-slowMovingCloud absolute top-1/2 md:top-0 left-0 bg-contain -ml-[1000px]"
+                class="bg-portal-background-cloud-2 bg-no-repeat w-full h-full animate-slowMovingCloud absolute top-1/2 md:top-0 left-0 bg-contain"
             />
         </div>
         <div
@@ -72,7 +72,7 @@ const classRoomBaseStyle =
         <img
             src="/img/img-other-tips.png"
             alt=""
-            class="h-32 flex absolute right-1/2 translate-x-1/2 bottom-0 md:right-0 md:transform-none"
+            class="h-32 flex absolute left-1/2 right-1/2 -translate-x-1/2 bottom-0 md:right-0 md:transform-none"
         />
     </div>
 </template>

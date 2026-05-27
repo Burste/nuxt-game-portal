@@ -3,9 +3,9 @@ import { usePlatformStore } from '@/stores/platform';
 import { storeToRefs } from 'pinia';
 import { useWindowSize } from '@vueuse/core';
 
-const { width, height } = useWindowSize();
-const { bgMusicStatus, homeSwiperIndex } = storeToRefs(usePlatformStore());
-const { onHomeSwiperChange, toggleBackgroundMusic } = usePlatformStore();
+const { width } = useWindowSize();
+const { homeSwiperIndex } = storeToRefs(usePlatformStore());
+const { onHomeSwiperChange } = usePlatformStore();
 
 const navList = [
     { name: '官網首頁', key: 'home' },
@@ -17,19 +17,14 @@ const navList = [
         key: 'gift',
         link: 'https://www.harrypottermagicawakened.tw/giftgrab/',
     },
-    { name: '儲值中心', key: 'pay', link: 'https://www.hpmapay.com/' },
+    // { name: '儲值中心', key: 'pay', link: 'https://www.hpmapay.com/' },
 ];
 
-const MUSIC_STATUS_IMG = {
-    PLAY: '/img/music_on.png',
-    MUTE: '/img/music_mute.png',
-};
-
-const BASE_WIDTH = width < 768 ? 80 : 100;
-const BASE_PADDING = width < 768 ? 20 : 36;
+const BASE_WIDTH = computed(() => (width.value < 768 ? 80 : 100));
+const BASE_PADDING = computed(() => (width.value < 768 ? 20 : 36));
 const transformPosition = (index) => {
-    return `translateX(calc(${BASE_WIDTH * index}% + ${
-        index * BASE_PADDING
+    return `translateX(calc(${BASE_WIDTH.value * index}% + ${
+        index * BASE_PADDING.value
     }px))`;
 };
 </script>

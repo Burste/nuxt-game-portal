@@ -1,6 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-    css: ['@/assets/style/main.scss'],
+    compatibilityDate: '2024-11-01',
+    srcDir: '.',
+    css: ['@/assets/style/main.css'],
     devtools: { enabled: true },
     modules: [
         '@pinia/nuxt',
@@ -8,16 +10,12 @@ export default defineNuxtConfig({
         '@vueuse/motion/nuxt',
         'nuxt-swiper',
     ],
-    // typescript: {
-    //     typeCheck: true,
-    // },
     build: {
         transpile: ['gsap'],
     },
     postcss: {
         plugins: {
-            tailwindcss: {},
-            autoprefixer: {},
+            '@tailwindcss/postcss': {},
         },
     },
     plugins: [{ src: '@/plugins/aos', mode: 'client' }],
