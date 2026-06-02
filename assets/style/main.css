@@ -5,6 +5,7 @@
     --color-portal-color-gold: #c2a673;
     --color-portal-color-white: #dadada;
     --color-portal-color-brown: #593522;
+    --color-portal-color-brown-dark: #361b08;
 
     /* Background images */
     --background-image-portal-slogan-m: url('/img/slogan_m.png');
@@ -19,11 +20,9 @@
 
     /* Animations */
     --animate-fastMovingCloud: closeCloudMoving 30s linear infinite;
-    --animate-slowMovingCloud: farCloudMoving 30s 10s linear infinite;
+    --animate-slowMovingCloud: farCloudMoving 60s linear infinite;
     --animate-flowUpAndDown: flowUpAndDown 3s linear infinite alternate;
 
-    /* Custom breakpoints */
-    --breakpoint-s480: 480px;
 }
 
 @layer base {
@@ -39,6 +38,14 @@
         font-size: 14px;
         margin: 0;
         padding: 0;
+    }
+    img, video {
+        -webkit-touch-callout: none;
+        user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        pointer-events: none;
     }
 }
 

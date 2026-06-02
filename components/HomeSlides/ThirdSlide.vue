@@ -1,68 +1,60 @@
 <script setup>
-const FEATURE_SLIDES = [
+const featureSlides = [
     {
-        imgM: '/img/img-feature-1_m.jpg',
-        imgPC: '/img/img-feature-1_pc.png',
-        alt: '',
+        image: '/img/img-feature-1_pc.png',
+        imageMobile: '/img/img-feature-1_m.jpg',
+        title: '',
     },
     {
-        imgM: '/img/img-feature-2_m.jpg',
-        imgPC: '/img/img-feature-2_pc.png',
-        alt: '',
+        image: '/img/img-feature-2_pc.png',
+        imageMobile: '/img/img-feature-2_m.jpg',
+        title: '',
     },
     {
-        imgM: '/img/img-feature-3_m.jpg',
-        imgPC: '/img/img-feature-3_pc.png',
-        alt: '',
+        image: '/img/img-feature-3_pc.png',
+        imageMobile: '/img/img-feature-3_m.jpg',
+        title: '',
     },
     {
-        imgM: '/img/img-feature-4_m.jpg',
-        imgPC: '/img/img-feature-4_pc.png',
-        alt: '',
+        image: '/img/img-feature-4_pc.png',
+        imageMobile: '/img/img-feature-4_m.jpg',
+        title: '',
     },
     {
-        imgM: '/img/img-feature-5_m.jpg',
-        imgPC: '/img/img-feature-5_pc.png',
-        alt: '',
+        image: '/img/img-feature-5_pc.png',
+        imageMobile: '/img/img-feature-5_m.jpg',
+        title: '',
     },
 ];
 
-const featureRef = ref(null);
-useSwiper(featureRef, {
-    effect: 'coverflow',
-    loop: true,
-    grabCursor: true,
-    centeredSlides: true,
-    slidesPerView: 'auto',
-    coverflowEffect: {
-        rotate: 45,
-        stretch: 0,
-        depth: 100,
-        modifier: 1,
-        slideShadows: true,
-    },
-    pagination: true,
-});
+const carouselConfig = {
+    slideWidth: 1008,
+    slideHeight: 570,
+    slideWidthMobile: 234,
+    slideHeightMobile: 410,
+    perspective: 1300,
+    perspectiveMobile: 600,
+    sideOffsetX: 608,
+    sideOffsetXMobile: 130,
+    sideOffsetZ: -400,
+    sideOffsetZMobile: -220,
+    sideOpacity: 0.5,
+    speed: 500,
+    autoplay: 3000,
+    imageFit: 'contain',
+    navSize: 84,
+    navSizeMobile: 40,
+    prevImage: '/img/btn-prev.png',
+    prevImageHover: '/img/btn-prev-hover.png',
+    nextImage: '/img/btn-next.png',
+    nextImageHover: '/img/btn-next-hover.png',
+};
 </script>
 
 <template>
     <div
-        class="flex items-center justify-center bg-portal-background-feature bg-cover bg-center bg-no-repeat w-full h-full"
+        class="bg-portal-background-feature bg-cover bg-center bg-no-repeat w-full h-full flex items-center"
     >
-        <div class="flex">
-            <swiper-container ref="featureRef" :init="false">
-                <swiper-slide
-                    v-for="(slide, index) in FEATURE_SLIDES"
-                    :key="index"
-                    class="bg-transparent relative w-61.25 max-w-61.25 min-h-107.5"
-                >
-                    <img
-                        :src="slide.imgM"
-                        :alt="slide.alt"
-                        class="w-61.25 h-107.5"
-                    />
-                </swiper-slide>
-            </swiper-container>
-        </div>
+        <CarouselSlider :items="featureSlides" :config="carouselConfig" />
     </div>
 </template>

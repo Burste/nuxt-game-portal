@@ -15,39 +15,49 @@ const navList = [
     {
         name: '福利兌換',
         key: 'gift',
-        link: 'https://www.harrypottermagicawakened.tw/giftgrab/',
+        link: '#',
     },
-    // { name: '儲值中心', key: 'pay', link: 'https://www.hpmapay.com/' },
+    { name: '儲值中心', key: 'pay', link: '#' },
 ];
 
+const isAltStyle = computed(() => homeSwiperIndex.value === 1);
 const BASE_WIDTH = computed(() => (width.value < 768 ? 80 : 100));
 const BASE_PADDING = computed(() => (width.value < 768 ? 20 : 36));
-const transformPosition = (index) => {
-    return `translateX(calc(${BASE_WIDTH.value * index}% + ${
-        index * BASE_PADDING.value
-    }px))`;
-};
+
+const indicatorStyle = computed(() => {
+    const i = homeSwiperIndex.value;
+    return {
+        transform: `translateX(calc(${BASE_WIDTH.value * i}% + ${i * BASE_PADDING.value}px))`,
+    };
+});
+
+function navItemClass(idx) {
+    const base =
+        'flex items-center justify-center w-20 relative cursor-pointer text-sm md:text-base transition-colors duration-300';
+    const isActive = idx === homeSwiperIndex.value;
+    if (isAltStyle.value) {
+        return [
+            base,
+            isActive
+                ? 'text-portal-color-brown-dark font-bold'
+                : 'text-portal-color-brown',
+        ];
+    }
+    return [base, isActive ? 'text-portal-color-gold font-bold' : 'text-white'];
+}
 </script>
 
 <template>
     <div
-        class="hidden md:flex fixed top-0 z-10 items-center justify-center mx-auto w-full p-5 backdrop-blur-sm"
+        class="hidden md:flex relative top-0 z-30 items-center justify-center mx-auto w-full p-5"
         data-aos="fade-down"
-        data-aos-delay="300"
+        data-aos-delay="500"
     >
-        <!-- TopHeader官網首頁地圖遊戲特色魔咒＆夥伴介紹官方精選福利兌換儲值中心 -->
         <div class="flex gap-5 md:gap-9 relative justify-center items-center">
             <div
                 v-for="(item, idx) in navList"
                 :key="item.key"
-                :class="[
-                    'flex items-center justify-center w-20 relative cursor-pointer text-sm md:text-base',
-                    {
-                        '!text-portal-color-brown': homeSwiperIndex === 1,
-                        'text-portal-color-gold font-bold':
-                            Number(idx) === Number(homeSwiperIndex),
-                    },
-                ]"
+                :class="navItemClass(idx)"
                 @click="
                     () => {
                         if (item.link) return;
@@ -62,9 +72,7 @@ const transformPosition = (index) => {
                 src="/img/nav_active.png"
                 alt=""
                 class="h-4 w-20 absolute -bottom-5 duration-300 z-10 left-0"
-                :style="{
-                    transform: transformPosition(homeSwiperIndex),
-                }"
+                :style="indicatorStyle"
             />
         </div>
         <!-- <img
@@ -75,5 +83,3 @@ const transformPosition = (index) => {
         /> -->
     </div>
 </template>
-
-<style scoped></style>

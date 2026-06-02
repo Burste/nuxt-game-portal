@@ -14,10 +14,11 @@ const swiper = useSwiper(containerRef, {
     mousewheel: true,
     direction: 'vertical',
     slidesPerView: 1,
-});
-
-watch(swiper.activeIndex, (newIndex) => {
-    onHomeSwiperChange(newIndex);
+    on: {
+        slideChange: (s) => {
+            onHomeSwiperChange(s.realIndex);
+        },
+    },
 });
 
 watch(homeSwiperIndex, (newVal, oldVal) => {
@@ -40,7 +41,7 @@ useHead({
 </script>
 
 <template>
-    <div class="w-full h-screen relative">
+    <div class="w-full h-screen absolute top-0 left-0">
         <ClientOnly>
             <swiper-container ref="containerRef" :init="false" class="mySwiper">
                 <swiper-slide>

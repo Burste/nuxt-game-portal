@@ -81,14 +81,14 @@ const COMMON_LINK = [
             />
         </div>
         <div
-            class="flex justify-center items-end z-[1] absolute bottom-[33%] md:bottom-[13%] lg:bottom-[25%]"
+            class="flex justify-center items-end z-[1] absolute bottom-[10%] md:bottom-[13%] lg:bottom-[25%]"
             data-aos="fade-up"
             data-aos-anchor-placement="top-bottom"
             data-aos-delay="1000"
             data-aos-once="false"
         >
             <div
-                class="flex flex-col justify-end md:justify-center gap-6 w-full"
+                class="flex flex-col justify-end md:justify-center md:gap-10 w-full"
             >
                 <div
                     class="flex h-[140px] min-w-[260px] w-full bg-contain bg-center bg-portal-slogan-m md:bg-portal-slogan-pc bg-no-repeat"
@@ -111,11 +111,13 @@ const COMMON_LINK = [
                         :alt="DOWNLOAD_TYPE.PC.name"
                         class="flex z-[1] w-[105px]"
                     />
-                    <div class="qrCode flex items-center justify-center">
+                    <div
+                        class="qrCode relative flex items-center justify-center"
+                    >
                         <img
                             :src="DOWNLOAD_TYPE.QRCODE.img"
                             :alt="DOWNLOAD_TYPE.QRCODE.name"
-                            class="flex z-[1] w-[105px]"
+                            class="flex w-[105px]"
                         />
                     </div>
                     <div class="flex flex-col gap-4">
@@ -139,7 +141,7 @@ const COMMON_LINK = [
             data-aos="fade-left"
             data-aos-delay="1200"
         >
-            <div class="flex flex-col gap-2">
+            <div class="flex flex-col gap-5 mr-3">
                 <img
                     v-for="item in SOCIAL_LINK"
                     :key="item.title"
@@ -154,11 +156,11 @@ const COMMON_LINK = [
 <style lang="scss" scoped>
 @keyframes qrcode {
     50% {
-        transform: translateX(100px);
+        transform: translateY(100px);
     }
 }
 .qrCode {
-    &::before {
+    &::after {
         content: '';
         position: absolute;
         top: 0px;

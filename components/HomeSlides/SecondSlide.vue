@@ -48,7 +48,7 @@ const classRoomBaseStyle =
 <template>
     <div class="relative w-full h-full overflow-hidden">
         <div
-            class="flex w-full h-full bg-portal-background-map-m md:bg-portal-background-map-pc bg-cover bg-center relative"
+            class="flex w-full h-full bg-portal-background-map-m md:bg-portal-background-map-pc bg-cover bg-center bg-no-repeat relative select-none pointer-events-none"
         >
             <div
                 class="bg-portal-background-cloud-1 bg-no-repeat w-full h-full animate-fastMovingCloud absolute top-0 left-0 bg-contain"
@@ -72,14 +72,16 @@ const classRoomBaseStyle =
         <img
             src="/img/img-other-tips.png"
             alt=""
-            class="h-32 flex absolute left-1/2 right-1/2 -translate-x-1/2 bottom-0 md:right-0 md:transform-none"
+            class="h-32 flex absolute md:left-[46%] md:bottom-[14.5%] left-1/2 bottom-[10%] transform -translate-x-1/2"
         />
     </div>
 </template>
 <style lang="scss" scoped>
 .room {
+    --room-x: 0;
     width: 187px;
     transition: all 0.6s ease-in-out;
+    translate: var(--room-x, 0px) 0;
     animation: roomFlow 10s linear infinite;
     &:nth-child(2n-1) {
         animation: roomFlowDown 10s linear infinite;
@@ -150,6 +152,20 @@ const classRoomBaseStyle =
             margin: 200px 0 0 -471px;
             background-image: url('/img/room-hufflepuff_hover.png');
         }
+    }
+}
+
+@media (max-width: 768px) {
+    .room {
+        --room-x: 5%;
+        // &-headMaster  { --room-x: 0px; }
+        // &-ravenclaw   { --room-x: 0px; }
+        // &-gryffindor  { --room-x: 0px; }
+        // &-potions     { --room-x: 0px; }
+        // &-astronomy   { --room-x: 0px; }
+        // &-hall        { --room-x: 0px; }
+        // &-slytherin   { --room-x: 0px; }
+        // &-hufflepuff  { --room-x: 0px; }
     }
 }
 </style>

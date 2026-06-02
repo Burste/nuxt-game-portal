@@ -9,7 +9,7 @@ const { toggleAppWidget } = platformStore;
 <template>
     <div
         :class="[
-            'flex md:hidden fixed top-0 left-0 w-full z-10 justify-between items-center px-4 py-3 bg-portal-background-app-bar bg-cover bg-center',
+            'flex md:hidden fixed top-0 left-0 w-full z-10 justify-between items-center px-3 py-3 bg-portal-background-app-bar bg-cover bg-center',
             {
                 hidden: !appDownloadWidgetStatus,
             },
