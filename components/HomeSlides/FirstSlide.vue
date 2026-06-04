@@ -163,7 +163,7 @@ const COMMON_LINK = [
     &::after {
         content: '';
         position: absolute;
-        top: 0px;
+        top: -6px;
         left: 50%;
         margin-left: -68px;
         width: 136px;

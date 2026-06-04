@@ -6,10 +6,10 @@
 #### [DEMO](https://nuxt-game-site.onrender.com/)
 
 ## 使用技術
-* 前端框架：Nuxt3、Vue3
+* 前端框架：Nuxt4、Vue3
 * 狀態管理：Pinia 🍍
 * CSS：TailwindCSS、SCSS
-* 動畫交互類：aos、swiper
+* 動畫交互：aos、swiper
   
 ## 預計更新方向
 一、魔咒夥伴介紹
