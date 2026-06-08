@@ -8,7 +8,7 @@ const { homeSwiperIndex } = storeToRefs(usePlatformStore());
 const { onHomeSwiperChange } = usePlatformStore();
 
 const navList = [
-    { name: '官網首頁', key: 'home' },
+    { name: '首頁', key: 'home' },
     { name: '地圖', key: 'about' },
     { name: '遊戲特色', key: 'feature' },
     // { name: '夥伴介紹', key: 'contact' },
