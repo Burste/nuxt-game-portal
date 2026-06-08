@@ -14,6 +14,22 @@ const PRELOAD_ASSETS = [
     '/img/img-other-tips.png',
     '/img/bg-download-bar.jpeg',
     '/img/bg-main-preview.jpg',
+    '/img/room-astronomy_hover.png',
+    '/img/room-astronomy_normal.png',
+    '/img/room-gryffindor_hover.png',
+    '/img/room-gryffindor_normal.png',
+    '/img/room-hufflepuff_hover.png',
+    '/img/room-hufflepuff_normal.png',
+    '/img/room-ravenclaw_hover.png',
+    '/img/room-ravenclaw_normal.png',
+    '/img/room-slytherin_hover.png',
+    '/img/room-slytherin_normal.png',
+    '/img/room-hall_hover.png',
+    '/img/room-hall_normal.png',
+    '/img/room-potions_hover.png',
+    '/img/room-potions_normal.png',
+    '/img/room-headMaster_hover.png',
+    '/img/room-headMaster_normal.png',
 ];
 
 const nuxtApp = useNuxtApp();

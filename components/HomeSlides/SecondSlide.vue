@@ -72,7 +72,7 @@ const classRoomBaseStyle =
         <img
             src="/img/img-other-tips.png"
             alt=""
-            class="h-32 flex absolute md:left-[46%] md:bottom-[14.5%] left-1/2 bottom-[10%] transform -translate-x-1/2"
+            class="h-32 flex absolute md:left-[57%] md:bottom-[14.5%] left-1/2 bottom-[10%] transform -translate-x-1/2"
         />
     </div>
 </template>
